@@ -17,6 +17,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 @Service
@@ -70,7 +71,7 @@ public class UserService {
             System.out.println(inputLine);
         in.close();
         JSONObject ciudadano = new JSONObject(response.toString());
-        return ciudadano.getString("apellido_p");
+        return ciudadano.getString("apellido_p").toLowerCase(Locale.ROOT);
     }
 }
 
