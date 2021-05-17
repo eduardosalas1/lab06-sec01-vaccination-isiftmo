@@ -8,6 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
@@ -49,4 +56,18 @@ public class UserService {
         vaccinationDate.set(Calendar.DAY_OF_MONTH, birthdate.get(Calendar.DAY_OF_MONTH));
         return vaccinationDate;
     }
+
+    public  void consult(String dni) throws IOException {
+            URL consult = new URL("https://ws-consultas.herokuapp.com/api/dni/" + dni);
+            URLConnection connectionvariable = consult.openConnection();
+            BufferedReader in = new BufferedReader(new InputStreamReader(connectionvariable.getInputStream()));
+            String inputLine;
+            while ((inputLine = in.readLine()) != null)
+                System.out.println(inputLine);
+            in.close();
+
+    }
+
+
+
 }
