@@ -1,10 +1,11 @@
 package data.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
-import java.util.Date;
+import java.util.Calendar;
+import static config.GlobalVariables.DB_CHAR_LENGTH;
+import static config.GlobalVariables.DB_DNI_LENGTH;
+import static config.GlobalVariables.DB_PHONE_LENGTH;
 
 
 @Entity
@@ -16,25 +17,25 @@ public class User implements Serializable{
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name", length = DB_CHAR_LENGTH)
     private String name;
 
-    @Column(name = "lastname")
+    @Column(name = "lastname", length = DB_CHAR_LENGTH)
     private String lastname;
 
     @Column(name = "email", unique = true)
     private String email;
 
-    @Column(name = "phone", unique = true)
+    @Column(name = "phone", length = DB_PHONE_LENGTH, unique = true)
     private String phone;
 
-    @Column(name = "dni", updatable = false, length = 8, unique = true)
+    @Column(name = "dni", updatable = false, length = DB_DNI_LENGTH, unique = true)
     private String dni;
 
     @Column(name = "birthdate")
-    private Date birthdate;
+    private Calendar birthdate;
 
-    public User(String name, String lastname, String email, String phone, String dni, Date birthDate){
+    public User(String name, String lastname, String email, String phone, String dni, Calendar birthDate){
         setName(name);
         setLastname(lastname);
         setDni(dni);
@@ -69,7 +70,7 @@ public class User implements Serializable{
 
     public void setDni(String dni) { this.dni = dni; }
 
-    public Date getBirthdate() { return birthdate; }
+    public Calendar getBirthdate() { return birthdate; }
 
-    public void setBirthdate(Date birthdate) { this.birthdate = birthdate; }
+    public void setBirthdate(Calendar birthdate) { this.birthdate = birthdate; }
 }

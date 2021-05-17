@@ -6,6 +6,9 @@ import data.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Calendar;
+import java.util.List;
+
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -18,10 +21,19 @@ public class UserController {
         return userService.save(userDTO);
     }
 
-    @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id){
-        return userService.findOneById(id);
+    @GetMapping("/{dni}")
+    public User getUserByDni(@PathVariable String dni){
+        return userService.findUserByDni(dni);
     }
 
+    @GetMapping("/all_users")
+    public List<User> getUsers(){
+        return userService.getUsers();
+    }
+
+    @GetMapping("/{dni}/vaccination_date")
+    public Calendar getVaccinationDateByDni(@PathVariable String dni){
+        return userService.findVaccinationDateByDni(dni);
+    }
 
 }

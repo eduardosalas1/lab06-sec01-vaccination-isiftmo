@@ -1,6 +1,5 @@
 package data.dtos;
-import java.util.Date;
-
+import java.util.Calendar;
 
 public class UserDTO {
     String dni;
@@ -8,9 +7,9 @@ public class UserDTO {
     String lastname;
     String email;
     String phone;
-    Date birthdate;
+    Calendar birthdate;
 
-    public UserDTO(String name, String lastname, String email, String phone, String dni, Date birthdate){
+    public UserDTO(String name, String lastname, String email, String phone, String dni, Calendar birthdate){
         setName(name);
         setLastname(lastname);
         setDni(dni);
@@ -41,7 +40,7 @@ public class UserDTO {
 
     public void setDni(String dni) { this.dni = dni; }
 
-    public Date getBirthdate() { return birthdate; }
+    public Calendar getBirthdate() { return birthdate; }
 
-    public void setBirthdate(Date birthdate) { this.birthdate = birthdate; }
+    public void setBirthdate(Calendar birthdate) { this.birthdate = birthdate; }
 }

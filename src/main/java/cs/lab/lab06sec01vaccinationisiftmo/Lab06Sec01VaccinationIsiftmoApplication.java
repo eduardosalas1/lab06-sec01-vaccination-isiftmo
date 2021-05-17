@@ -1,6 +1,5 @@
 package cs.lab.lab06sec01vaccinationisiftmo;
 
-import data.repositories.UserRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
