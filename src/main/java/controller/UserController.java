@@ -3,9 +3,11 @@ package controller;
 import business.UserService;
 import data.dtos.UserDTO;
 import data.entities.User;
+import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
 
@@ -17,7 +19,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public User postUser(@RequestBody UserDTO userDTO){
+    public User postUser(@RequestBody UserDTO userDTO) throws Exception {
         return userService.save(userDTO);
     }
 
